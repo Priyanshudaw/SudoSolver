@@ -1,0 +1,38 @@
+body { font-family: Calibri, sans-serif; }
+#container { text-align: center }
+table { 
+    border-collapse: collapse;
+    font-size: 2em; 
+    margin: 0 auto; 
+}
+colgroup, tbody { 
+    border: solid medium; 
+}
+td { 
+    border: solid thin; 
+    height: 1.4em; 
+    width: 1.4em; 
+    /* color : red;
+    border-color: black; */
+    text-align: center; 
+    padding: 0; 
+}
+.clr{
+    color : red; 
+    border-color: black;
+}
+button { 
+    margin-top: 15px; 
+    font-size: 1.5em; 
+}
+
+.img{
+    height:100px ; 
+    width: 100px; 
+    margin-bottom: auto;
+    align :"left";
+}
+.padd{
+    margin: auto;
+    padding-bottom: 10px;
+}
