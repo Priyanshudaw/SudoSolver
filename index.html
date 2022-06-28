@@ -31,7 +31,13 @@
        <tr> <td contenteditable="true"></td> <td contenteditable="true"></td> <td contenteditable="true"></td> <td contenteditable="true"></td> <td contenteditable="true"></td> <td contenteditable="true"></td> <td contenteditable="true"></td> <td contenteditable="true"></td> <td contenteditable="true"></td>
     </table>
     <div>
-      <button id="solve-button" class="glow-on-hover" >Solve!</button>
+      <button id="create-button" class="glow-on-hover" >Create Puzzel</button>
+    </div>
+    <div>
+      <button id="check-button" class="glow-on-hover" >Check Solution</button>
+    </div>
+    <div>
+      <button id="solve-button" class="glow-on-hover" >Get Answer!</button>
     </div>
     <div>
       <button id="clear-button" class="glow-on-hover" >Clear board</button>
@@ -64,11 +70,43 @@
     }
   })
 
+  document.getElementById("create-button").addEventListener("click", function(event) {
+
+    var tds = document.getElementsByTagName("td");
+    for (var i = 0; i < tds.length; i++) {
+      tds[i].innerText = "";
+      tds[i].classList.remove("clr");
+      document.getElementById("sudoku-board").style.backgroundColor = "white";
+    }
+
+
+    var boardString = boardToString();
+    var solution = solve(boardString);
+    solution = randomed(solution);
+
+    solution = removed(solution);
+    stringToBoard(solution);
+  })
+
+  document.getElementById("check-button").addEventListener("click", function(event) {
+    var boardString = boardToString();
+    var boardArray = boardString.split("");
+    if(boardIsValid(boardArray)&&boardIsSolved(boardArray)){
+      document.getElementById("sudoku-board").style.backgroundColor = "lightgreen";
+      alert("Correct Solution!");
+    }
+    else{
+      document.getElementById("sudoku-board").style.backgroundColor = "red";
+      alert("Incorrect Solution!");
+    }
+  })
+
   document.getElementById("clear-button").addEventListener("click", function(event){
     var tds = document.getElementsByTagName("td");
     for (var i = 0; i < tds.length; i++) {
       tds[i].innerText = "";
       tds[i].classList.remove("clr");
+      document.getElementById("sudoku-board").style.backgroundColor = "white";
     }
   })
 
