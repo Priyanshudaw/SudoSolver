@@ -24,6 +24,82 @@
     return false;
   }
 
+  function randomed(boardString) {
+    var boardArray = boardString.split("");
+    for(var i=0;i<10;i++){
+      var switchcase = Math.floor((Math.random() * 6) + 1);
+      switch(switchcase) {
+        case 1:
+          var r1 = 9*Math.floor(Math.random() * 3);
+          var r2 = 9*Math.floor(Math.random() * 3);
+          if(r1!=r2){
+            for(var j=0;j<9;j++){
+              [boardArray[r1+j], boardArray[r2+j]] = [boardArray[r2+j], boardArray[r1+j]];
+            }
+          }
+          break;
+        case 2:
+            var r1 = 27+9*Math.floor(Math.random() * 3);
+            var r2 = 27+9*Math.floor(Math.random() * 3);
+            if(r1!=r2){
+              for(var j=0;j<9;j++){
+                [boardArray[r1+j], boardArray[r2+j]] = [boardArray[r2+j], boardArray[r1+j]];
+              }
+            }
+            break;
+        case 3:
+              var r1 = 54+9*Math.floor(Math.random() * 3);
+              var r2 = 54+9*Math.floor(Math.random() * 3);
+              if(r1!=r2){
+                for(var j=0;j<9;j++){
+                  [boardArray[r1+j], boardArray[r2+j]] = [boardArray[r2+j], boardArray[r1+j]];
+                }
+              }
+              break;
+        case 4:
+                var r1 = Math.floor(Math.random() * 3);
+                var r2 = Math.floor(Math.random() * 3);
+                if(r1!=r2){
+                  for(var j=0;j<9;j++){
+                    [boardArray[r1+j*9], boardArray[r2+j*9]] = [boardArray[r2+j*9], boardArray[r1+j*9]];
+                  }
+                }
+                break;  
+        case 5:
+                  var r1 = 3+Math.floor(Math.random() * 3);
+                  var r2 = 3+Math.floor(Math.random() * 3);
+                  if(r1!=r2){
+                    for(var j=0;j<9;j++){
+                      [boardArray[r1+j*9], boardArray[r2+j*9]] = [boardArray[r2+j*9], boardArray[r1+j*9]];
+                    }
+                  }
+                  break;       
+        case 6:
+                    var r1 = 6+Math.floor(Math.random() * 3);
+                    var r2 = 6+Math.floor(Math.random() * 3);
+                    if(r1!=r2){
+                      for(var j=0;j<9;j++){
+                        [boardArray[r1+j*9], boardArray[r2+j*9]] = [boardArray[r2+j*9], boardArray[r1+j*9]];
+                      }
+                    }
+                    break;      
+        default:
+          console.log("Switch Case Wrong");
+      }
+    }
+    return boardArray.join("");
+  }
+
+  function removed(boardString) {
+    var boardArray = boardString.split("");
+    var deletArray = Array.from({length: 50}, () => Math.floor(Math.random() * 80));
+    
+    for(var i=0;i<50;i++){
+      boardArray[deletArray[i]]=" ";
+    }
+    return boardArray.join("");
+  }
+
   function boardIsInvalid(boardArray) {
     return !boardIsValid(boardArray);
   }
